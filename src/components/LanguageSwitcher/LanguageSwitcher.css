@@ -7,18 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import UserType from '../types/UserType';
+@import '../variables.css';
 
-const me = {
-  type: UserType,
-  resolve({ request }) {
-    return (
-      request.user && {
-        id: request.user.id,
-        email: request.user.email,
-      }
-    );
-  },
-};
-
-export default me;
+.root {
+  color: rgba(255, 255, 255, 0.6);
+}

@@ -10,15 +10,28 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Page from '../../components/Page';
-import privacy from './privacy.md';
 
-function action() {
+async function action({ locale }) {
+  const data = await new Promise(resolve => {
+    require.ensure(
+      [],
+      require => {
+        try {
+          resolve(require(`./privacy.${locale}.md`)); // eslint-disable-line import/no-dynamic-require
+        } catch (e) {
+          resolve(require('./privacy.md'));
+        }
+      },
+      'privacy',
+    );
+  });
+
   return {
-    chunks: ['privacy'],
-    title: privacy.title,
+    title: data.title,
+    chunk: 'privacy',
     component: (
       <Layout>
-        <Page {...privacy} />
+        <Page {...data} />
       </Layout>
     ),
   };

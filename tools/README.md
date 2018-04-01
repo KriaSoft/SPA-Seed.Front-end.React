@@ -10,9 +10,15 @@
 * Launches [Browsersync](https://browsersync.io/) and
   [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement)
 
+### `yarn run extractMessages` (`extractMessages.js`)
+
+* Extract intl messages from source (`src/**/*.{js,jsx}`)
+* Update messages in `src/messages` directory
+
 ### `yarn run build` (`build.js`)
 
 * Cleans up the output `/build` folder (`clean.js`)
+* Extract intl messages from source (`extractMessages.js`)
 * Copies static files to the output folder (`copy.js`)
 * Creates application bundles with Webpack (`bundle.js`, `webpack.config.js`)
 
@@ -50,6 +56,5 @@ $ yarn start --release                    # Launch dev server in production mode
   server-side bundles
 * `postcss.config.js` - PostCSS configuration for transforming styles with JS
   plugins
-* `run.js` - Helps to launch other scripts with `babel-node` (e.g. `babel-node
-  tools/run build`)
+* `run.js` - Helps to launch other scripts with `babel-node` (e.g. `babel-node tools/run build`)
 * `.eslintrc` - ESLint overrides for built automation scripts
